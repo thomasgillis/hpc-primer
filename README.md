@@ -8,6 +8,7 @@ HPC primer based on C/C++ intended for anybody trying to get back in (coding) sh
 
 1. [introduction](meta/intro.md)
 1. [compilation and tools](compilation/compilation.md)
+1. [C language](c/c.md)
 1. [resources](meta/resources.md)
 
 

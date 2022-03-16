@@ -1,5 +1,7 @@
 # C - basics
 
+{:toc}
+
 ### main function
 
 every code must contain the main function
@@ -28,14 +30,16 @@ you have a few elementary types, among others:
 Macros are directly replaced (verbatim) in the code.
 Some are already defined such as `M_PI` which is the value of pi.
 
-You can also define your own macros (you should be careful though):
+You can also define your own macros (you should be careful though, it can be very bug-prone):
 
 ```c
-#define m_log(format)                                    \
-    ({                                                        \
-        char m_log_noheader_msg_[1024];                       \
-        sprintf(m_log_noheader_msg_, format, ##__VA_ARGS__);  \
-        fprintf(stdout, "%s\n", m_log_noheader_msg_);         \
+#define SIZE 89
+
+#define m_sign(a)                                                \
+    ({                                                           \
+        double m_sign_a_    = (a);                               \
+        double m_sign_zero_ = 0;                                 \
+        (m_sign_zero_ < m_sign_a_) - (m_sign_a_ < m_sign_zero_); \
     })
 ```
 

@@ -1,3 +1,4 @@
 # C language
 
-- [c basics](basics.md)
+- [basics in C](basics.md)
+- [advanced C features](advanced.md)

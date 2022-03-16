@@ -6,8 +6,8 @@ HPC primer based on C/C++ intended for anybody trying to get back in (coding) sh
 
 (intended content for the moment, will be updated when possible)
 
-1. [introduction](meta/introduction.md)
-1. [compilation and tools](section-1/section-1.md)
+1. [introduction](meta/intro.md)
+1. [compilation and tools](compilation/compilation.md)
 1. [resources](meta/resources.md)
 
 

@@ -11,8 +11,9 @@ The best way to look at the content is to use the associated [website](https://t
 
 ### Contribute
 
-Any contribution are welcome, please create a PR to see your work merged.
-Feel free to contact us directly as well if you spot mistakes and/or inconsistencies.
+
+Any contribution is welcome, please create a PR to see your work reviewed and merged.
+Also feel free to contact us directly if you spot mistakes and/or inconsistencies.
 
 ### Licensing
 

@@ -118,3 +118,7 @@ C comes with a standard library providing an implementation for all the commonly
 In C the string are stored as a 
 
 ### 
+
+
+-----------------------------------------
+[home](../index.md) - [compilation](c.md)

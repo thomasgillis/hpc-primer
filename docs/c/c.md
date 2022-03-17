@@ -2,3 +2,6 @@
 
 - [basics in C](basics.md)
 - [advanced C features](advanced.md)
+
+-----------------------------------------
+[home](../index.md)

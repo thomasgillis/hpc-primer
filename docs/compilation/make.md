@@ -109,6 +109,6 @@ VAR4 ?= ${HOME}
 
 
 -----------------------------------------
-[home](index.md) - [up](compilation/compilation.md)
+[home](../index.md) - [compilation](compilation.md)
 
 

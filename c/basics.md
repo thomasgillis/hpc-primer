@@ -2,7 +2,7 @@
 
 {:toc}
 
-### main function
+## main function
 
 every code must contain the main function
 ```c
@@ -17,7 +17,7 @@ if the code returns `0`, it means success while another value means that an erro
 - the `argc` and `argv` arguments are used to capture the command line. For example calling `./exe --option1 --flag2` will lead to `argc = 3` and `argv = {"./exe", "--option1", "--flag2"}`.
 
 
-### elementary types
+## elementary types
 you have a few elementary types, among others:
 
 - `int` an integer

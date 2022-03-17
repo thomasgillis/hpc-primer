@@ -1,10 +1,11 @@
 # hpc-primer
 
-HPC primer based on C/C++ intended for anybody trying to get back in (coding) shape
+HPC primer based on C/C++ intended for anybody trying to get back in (coding) shape.
+
+This primer has been designed to refresh the memory of the commonly used C/C++ functionalities.
+Please see more complete and detailed resources for further explanations.
 
 ### Content
-
-(intended content for the moment, will be updated when possible)
 
 1. [introduction](meta/intro.md)
 1. [compilation and tools](compilation/compilation.md)

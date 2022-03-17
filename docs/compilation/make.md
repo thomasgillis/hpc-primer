@@ -29,9 +29,57 @@ target: prerequisites
 - **prerequisites**: other targets that need to be called beforehand
 - **recipes**: the way to build the target. Recipes lines start with a `tab` and are executed (in parallel) as independent process.
 
-### How-to
+### multi(-lines) recipes
 
-#### multi-line recipes
+There is two ways to handle multi(-line) recipes:
+
+1. add lines: this will lead to the (maybe parallel and unordered) execution of the recipes. You should also pay attention that every recipe will be executed starting from the location where `make` has been called.
+
+2. use the `\` and/or `&&` symbols to break lines and introduce dependencies between recipes
+
+
+```make
+# this will work as the recipes are executed both from the same 
+my_dir:
+    cd /path/to/my_dir
+    mkdir -p my_dir
+
+# This will work
+my_dir:
+    cd /path/to/my_dir && mkdir -p my_dir
+
+# equivalently
+my_dir:
+    cd /path/to/my_dir && \
+    mkdir -p my_dir
+```
+
+### removing time-stamps
+
+You can remove the time-stamp constrain on the prerequisites and only check for existence using `|`:
+
+```make
+target: file_1 file_2 | file_3
+    touch target
+```
+
+Here an up-to-date timestamp for `file_1` and `file_2` is requested while only the existence of `file3` is checked.
+See [here](https://www.gnu.org/software/make/manual/html_node/Prerequisite-Types.html) for more information.
+
+### special targets
+
+`make` provides a few special targets (see [here](https://www.gnu.org/software/make/manual/html_node/Special-Targets.html) for the complete list) that help to control the behavior of dependencies.
+
+- `.PHONY: target` tells to make that the target is not associated to a file. The consequence is that everytime the target is called (through `make target` or as prerequisites) the rule is executed.
+
+
+### Best practice
+
+It is quite common (not mandatory) to have a few phony targets defined in your makefile:
+
+- `make clean` should cleanup the current build
+- `make reallyclean` should really cleanup the current build, including every file that might stay during the `clean` rule
+- `make info` displays some information about your program
 
 
 ## Variable
@@ -58,5 +106,9 @@ VAR4 ?= ${HOME}
 
 - `wildcard`
 - `foreach`
+
+
+-----------------------------------------
+[home](index.md) - [up](compilation/compilation.md)
 
 

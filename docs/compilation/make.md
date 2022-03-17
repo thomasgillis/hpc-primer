@@ -71,6 +71,10 @@ It is quite common (not mandatory) to have a few phony targets defined in your m
 
 ## Advanced features
 
+### Parallelisation
+
+`make` can build multiple recipes in parallel. To do so, simply add the option `-j N` where `N` is the maximum number of processes. Some user might be tempted to use `make -j` without specifying a number, which can cause weird behaviors such as signals `2` or `9`. I would therefore refrain to do so.
+
 ### multi(-lines) recipes
 
 There is two ways to handle multi(-line) recipes:
@@ -81,16 +85,16 @@ There is two ways to handle multi(-line) recipes:
 
 Some examples:
 ```make
-# this will work as the recipes are executed both from the same 
+# this will work as the recipes are executed both from the same location
 my_dir:
     cd /path/to/my_dir
     mkdir -p my_dir
 
-# This will work
+# This will work as a single recipe
 my_dir:
     cd /path/to/my_dir && mkdir -p my_dir
 
-# equivalently
+# equivalently we can format the recipe over two lines
 my_dir:
     cd /path/to/my_dir && \
     mkdir -p my_dir
@@ -127,7 +131,7 @@ To compile all your `.o` files you can for example use the following rule:
 
 ```make
 %.o: %.c
-    CXX 
+    CXX $^ -o $@
 ```
 
 
@@ -135,7 +139,10 @@ To compile all your `.o` files you can for example use the following rule:
 
 ### Special targets
 
-[Special targets](https://www.gnu.org/software/make/manual/html_node/Special-Targets.html) can be used to further fine-tune the behavior of `make`
+[Special targets](https://www.gnu.org/software/make/manual/html_node/Special-Targets.html) can be used to further fine-tune the behavior of `make`.
+
+- `.NOPARALLEL:` forbids the execution of `make` in parallel for all the recipes contained in this file. This does not apply to the sub-`make` processes that might have been called.
+- `.EXPORT_ALL_VARIABLES` exports all the current variables to a sub-`make` call performed in the recipes.
 
 
 ### Functions

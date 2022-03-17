@@ -2,23 +2,10 @@
 {:.no_toc}
 
 ## Content
+{:.no_toc}
 
 * TOC
 {:toc}
-
-## main function
-
-every code must contain the main function
-```c
-int main(int argc, char**argv){
-
-    return 0;
-}
-```
-
-if the code returns `0`, it means success while another value means that an error occured.
-
-- the `argc` and `argv` arguments are used to capture the command line. For example calling `./exe --option1 --flag2` will lead to `argc = 3` and `argv = {"./exe", "--option1", "--flag2"}`.
 
 ## Datatypes
 
@@ -86,8 +73,48 @@ You can also define your own macros (you should be careful though, it can be ver
     })
 ```
 
+## Memory and pointers
+
+The advantage of C is that the memory management must be done by the user. It may also lead to the very (in)famous `SEGFAULT` termination of your program.
+
+### Memory allocation
 
 
-### function definition
+### Pointers
+
+
+## Functions
+
+### Function definition
 
 a function has a retu
+
+### Function `main`
+
+every code must contain the main function
+```c
+int main(int argc, char**argv){
+
+    return 0;
+}
+```
+
+if the code returns `0`, it means success while another value means that an error occured.
+
+- the `argc` and `argv` arguments are used to capture the command line. For example calling `./exe --option1 --flag2` will lead to `argc = 3` and `argv = {"./exe", "--option1", "--flag2"}`.
+
+
+
+## Standard library
+
+C comes with a standard library providing an implementation for all the commonly used functions
+
+### Print and logs
+
+- `printf`
+
+### String management
+
+In C the string are stored as a 
+
+### 

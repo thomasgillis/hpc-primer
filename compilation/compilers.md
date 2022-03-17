@@ -1,4 +1,13 @@
 ## Compilers
+{:.no_toc}
+
+## Content
+{:.no_toc}
+
+* TOC
+{:toc}
+
+## The two steps of compiling
 
 Compiled languages rely on the compiler to transform source codes into an executable binary.
 This process involves two stages:
@@ -6,7 +15,7 @@ This process involves two stages:
 1. **compilation**: transform the source code (usually) `.c`/`.cpp` files into object files `.o`
 2. **linking**: links the different `.o` together by matching the function calls, adding the libraries, etc.
 
-### The compiler choice
+## The compiler
 
 Two very common compilers exist: `gcc` and `clang`.
 
@@ -26,7 +35,7 @@ CXX [options] -o code.cpp
 
 Many options are available for each compilers, see [here for GNU](https://gcc.gnu.org/onlinedocs/gcc/Invoking-GCC.html#Invoking-GCC) and [here for clang](https://clang.llvm.org/docs/UsersManual.html).
 
-### Linker
+## The linker
 
 The linker is used to put together the object files into an executable or a library. Commonly called using `ld` every compiler suite features one.
 To make it easier you can link using your compiler:
@@ -37,7 +46,7 @@ CXX obj1.o obj2.o -o exe
 
 You can also use the linker to create shared libraries using the `-shared` option. To create static libraries you should use `ar` instead.
 
-#### Use external libraries
+### Use external libraries
 
 To use external libraries, after having installed them you can simply request the linker to link to it:
 ```bash
@@ -62,7 +71,7 @@ CXX -Lpath/to/lib -lfancy -Wl,-rpath,path/to/lib
 ```
 
 
-### Advantages of `clang`
+## Advantages of `clang`
 
 The compiler `clang` has some advantages compared to `gcc`, especially in the wide range of tools provided: `clang-format`, `clang-tidy`, etc.
 

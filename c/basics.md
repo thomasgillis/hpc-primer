@@ -1,5 +1,6 @@
 # C - basics
 
+* TOC
 {:toc}
 
 ## main function
@@ -16,8 +17,9 @@ if the code returns `0`, it means success while another value means that an erro
 
 - the `argc` and `argv` arguments are used to capture the command line. For example calling `./exe --option1 --flag2` will lead to `argc = 3` and `argv = {"./exe", "--option1", "--flag2"}`.
 
+### Datatypes
 
-## elementary types
+## Elementary types
 you have a few elementary types, among others:
 
 - `int` an integer
@@ -25,7 +27,45 @@ you have a few elementary types, among others:
 - `double` double precision floating point number
 - `char` a character
 
-### macros
+### Structures
+
+There is also the possibility to define structures, a.k.a. custom datatypes
+
+```c
+typedef struct{
+    int a;
+    double b;
+} my_struct;
+```
+
+The use of the structure in the code is then done as
+
+```c
+my_struct s;
+s.a = 8;
+s.b = M_PI;
+```
+
+### Enums
+
+It is also possible to define a type that can only take a few given values, know as an `enum`.
+
+```c
+typedef enum{
+    A, B, C
+} my_enum;
+
+
+my_enum list;
+if (list == A){
+    // do something
+} elif (list == B){
+    // do something else
+}
+```
+
+
+## Macros
 
 Macros are directly replaced (verbatim) in the code.
 Some are already defined such as `M_PI` which is the value of pi.
@@ -43,24 +83,7 @@ You can also define your own macros (you should be careful though, it can be ver
     })
 ```
 
-### structures - user defined types
 
-There is also the possibility to define custom datatypes:
-
-```c
-typedef struct{
-    int a;
-    double b;
-} my_struct;
-```
-
-Will lead to structure:
-
-```c
-my_struct s;
-s.a = 8;
-s.b = M_PI;
-```
 
 ### function definition
 

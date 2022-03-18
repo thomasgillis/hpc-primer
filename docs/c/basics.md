@@ -17,30 +17,26 @@ you have a few elementary types, among others:
 - `double` double precision floating point number
 - `char` a character
 
-### Structures
+### Structure
 
 There is also the possibility to define structures, a.k.a. custom datatypes
 
-```c
+```c++
 typedef struct{
     int a;
     double b;
 } my_struct;
-```
 
-The use of the structure in the code is then done as
-
-```c
 my_struct s;
 s.a = 8;
 s.b = M_PI;
 ```
 
-### Enums
+### Enum
 
 It is also possible to define a type that can only take a few given values, know as an `enum`.
 
-```c
+```c++
 typedef enum{
     A, B, C
 } my_enum;
@@ -49,7 +45,7 @@ typedef enum{
 my_enum list;
 if (list == A){
     // do something
-} elif (list == B){
+} else if (list == B){
     // do something else
 }
 ```
@@ -62,7 +58,7 @@ Some are already defined such as `M_PI` which is the value of pi.
 
 You can also define your own macros (you should be careful though, it can be very bug-prone):
 
-```c
+```c++
 #define SIZE 89
 
 #define m_sign(a)                                                \
@@ -92,7 +88,7 @@ a function has a retu
 ### Function `main`
 
 every code must contain the main function
-```c
+```c++
 int main(int argc, char**argv){
 
     return 0;

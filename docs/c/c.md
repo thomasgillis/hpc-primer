@@ -4,14 +4,14 @@
 ## Content
 {:.no_toc}
 
-* TOC
+1. TOC
 {:toc}
 
-## C - basics
+--------------------------------------------------------------------------------
 
-### Datatype and variables
+## Datatype and variables
 
-#### Elementary types
+### Elementary types
 you have a few elementary types, among others:
 
 - `int` an integer
@@ -20,7 +20,7 @@ you have a few elementary types, among others:
 - `char` a character
 
 
-#### Arrays
+### Arrays
 
 We can declare an array (more to be detailed below) using the `[size]` after the array's name.
 The array can then be accessed using `[i]` where `i` goes from `0` to `size-1`.
@@ -34,7 +34,7 @@ b[0] = 10;
 b[9] = 0;
 ```
 
-#### Variable's scope
+### Variable's scope
 
 The scope of a variable can be interpreted as its lifetime.
 In C every variable that is declared within `{}` will be unaccessible outside.
@@ -47,7 +47,7 @@ In C every variable that is declared within `{}` will be unaccessible outside.
 // b is unknown here
 ```
 
-#### Custom type definition with `typedef`
+### Custom type definition with `typedef`
 
 To shorten the code or defines type alias you can use the `typedef` directive:
 
@@ -61,7 +61,7 @@ real b = 5.7;
 
 This is particularly convenient when dealing with `enum` and `struct` as described below.
 
-#### Structure with `struct`
+### Structure with `struct`
 
 There is also the possibility to define structures, a.k.a. custom datatype
 
@@ -147,7 +147,7 @@ if((B%2) == 0){
 ```
 
 
-### Macros
+## Macros
 
 Macros are directly replaced (verbatim) in the code.
 Some are already defined such as `M_PI` which is the value of pi.
@@ -165,11 +165,11 @@ You can also define your own macros (you should be careful though, it can be ver
     })
 ```
 
-### Memory and pointers
+## Memory and pointers
 
 The advantage of C is that the memory management must be done by the user. It may also lead to the very (in)famous `SEGFAULT` termination of your program.
 
-#### Pointers
+### Pointers
 
 A pointer is the name given to an address in memory __pointing__ to a variable.
 The type of a pointer is defined based to the type of the variable its pointing to:
@@ -190,7 +190,7 @@ int* ptr_a = &a;
 // now a is 8
 ```
 
-#### Pointer arithmetic
+### Pointer arithmetic
 
 The pointers are both powerful and dangerous, especially when doing "pointer arithmetic".
 Useful to understand the arithmetic the function `sizeof()` returns the size (in bytes `1 byte = 8 bits`) of the variable in memory.
@@ -253,7 +253,7 @@ This now opens the door to the memory allocation and the memory management by th
 
 
 
-#### Memory allocation
+### Memory allocation
 
 There are two main part of your memory that you can use: the **heap** and the **stack**.
 The exact differences are beyond the scope of this document but it is useful to remember that
@@ -283,7 +283,7 @@ free(b);
 ```
 
 
-### Functions
+## Functions
 
 A function has both a name, an argument list (+ types!), and a return type
 
@@ -297,7 +297,7 @@ void function_1(int * b);
     b[0] = 9.0;
 ```
 
-#### Function declaration vs definition
+### Function declaration vs definition
 
 In C (and C++) a function has both a declaration and a definition.
 
@@ -307,7 +307,7 @@ In C (and C++) a function has both a declaration and a definition.
 To avoid massive compilation time it is common practice to declare the functions in a separate file (usually `.h`) and define them in another file (usually `.c`).
 This allows other files to include the function declaration while not being aware of the definition.
 
-#### Function `main`
+### Function `main`
 
 every code must contain the main function
 ```c++
@@ -323,27 +323,25 @@ if the code returns `0`, it means success while another value means that an erro
 
 
 
-### Standard library
+## Standard library
 
 C comes with a standard library providing an implementation for all the commonly used functions
 
-#### Print and logs
+### Print and logs
 
 - `printf`
 
-#### String management
+### String management
 
 In C the string are stored as a 
 
 
 
-## C - advanced
 
 
+## Variadic functions and macros
 
-### Variadic functions and macros
-
-### Memory alignment
+## Memory alignment
 
 Memory alignment is a powerful tool to reach an immediate performance gain without changing your code.
 

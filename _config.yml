@@ -1,1 +1,7 @@
-theme: jekyll-theme-hacker
+# theme: jekyll-theme-midnight
+theme: jekyll-theme-primer
+
+markdown: kramdown
+
+plugins:
+  - jekyll-sitemap

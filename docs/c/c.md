@@ -4,7 +4,7 @@
 ## Content
 {:.no_toc}
 
-1. TOC
+* TOC
 {:toc}
 
 --------------------------------------------------------------------------------
@@ -325,15 +325,25 @@ if the code returns `0`, it means success while another value means that an erro
 
 ## Standard library
 
-C comes with a standard library providing an implementation for all the commonly used functions
+C comes with a standard library providing an implementation for all the commonly used functions.
+We will not present the whole library here but only some of the meaningful features in computing.
+See the [resource section](../meta/resources.md) for more details
 
 ### Print and logs
 
-- `printf`
+- `printf` is a variadic function (variable number of arguments) that can be used to wite to the stdout
+- `fopen` and `fclose` open and close a file respectively
+
+If you wish to check for the existence of a folder and create it if it doesn't exist, you can use the following code
+
 
 ### String management
 
-In C the string are stored as a 
+In C the string are stored as a an array of char.
+String management is beyond the scope of this primer but here is a very short of the important points:
+- `/n` is the end of line character and will go to the next line
+- `/t` is the tab character 
+
 
 
 

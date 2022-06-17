@@ -10,6 +10,7 @@ Please see more complete and detailed resources for further explanations.
 1. [introduction](meta/intro.md)
 1. [compilation and tools](compilation/compilation.md)
 1. [C language](c/c.md)
+1. [Parallelism](parallelism/mpi.md)
 1. [other resources](meta/resources.md)
 
 

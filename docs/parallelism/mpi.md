@@ -1,7 +1,3 @@
----
-use_math: true
----
-
 # Parallelism
 {:.no_toc}
 

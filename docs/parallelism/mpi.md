@@ -138,13 +138,19 @@ $$ -->
 Here we take the opposite approach as we aim to increase the computational resources proportionally to the size of the problem. This analysis is closer to the real-life applications
 
 Considering the reference configuration as being $T_o = \left( 1-\alpha_p\right) + \alpha_p$, when multiplying the computational resources by $r$, the size of the problem is going to be multiplied by $r$ as well. As we scale the domain, the speedup does not make sense anymore and we will instead use and efficiency measure:
-$$\eta = \dfrac{T_o}{T} = \dfrac{1}{ r \cdot \left[ \left( 1- \alpha_p \right) + \dfrac{\alpha_p}{r} \right]} = \dfrac{1}{r - (r-1) \alpha_p }$$
+
+$$
+\eta = \dfrac{T_o}{T} = \dfrac{1}{ r \cdot \left[ \left( 1- \alpha_p \right) + \dfrac{\alpha_p}{r} \right]} = \dfrac{1}{r - (r-1) \alpha_p }
+$$
 
 By analogy some still like to define the speedup as being $s = \dfrac{1}{\eta}$, which gives now
 $$S = r - (r-1) \alpha_p$$
 
 Another approach is to define $\alpha_s = 1 - \alpha_p$ as the serial percentage of the program. The relations then become
-$$\eta =\dfrac{1}{1 + (r-1) \alpha_s } \quad \Leftrightarrow \quad S = 1 + (r-1) \alpha_s$$
+
+$$
+\eta =\dfrac{1}{1 + (r-1) \alpha_s } \quad \Leftrightarrow \quad S = 1 + (r-1) \alpha_s
+$$
 
 
 ## Strong scaling and Gustafson's law

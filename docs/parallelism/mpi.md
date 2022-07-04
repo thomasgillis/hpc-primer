@@ -91,6 +91,71 @@ On top of this main directions, some specific implementations of each communicat
 - [OpenUCX FAQ](https://openucx.org/documentation/)
 
 
+--------------------------------------------------------------------------------
+
+# Performance analysis
+
+## Strong scaling - aka Amdahl's Law
+
+In this case we fix the global workload and increase the computational resources.
+
+### Speedup
+if $\alpha$ percent of the program can be done in parallel, then the speedup from one resources $N_o$ to another one $N$ is given by (where $r = N/N_o$)
+
+$$
+\dfrac{1}{ \left( 1-\alpha\right) + \dfrac{\alpha}{r}}
+$$
+
+As N increases, $r \rightarrow \infty$ and the speedup is bounded by $1/\left(1-\alpha\right)$.
+
+The speedup is then valuable to determine $\alpha$, the percentage of the program actually done in parallel.
+
+### Efficiency
+still considering the same definitions, the efficiency of the program is given by 
+
+$$
+\dfrac{N_o}{ \left[ \left( 1-\alpha\right) + \dfrac{\alpha}{r} \right] \cdot N}
+\qquad \Leftrightarrow \qquad
+\dfrac{1}{ \left[ \left( 1-\alpha\right) + \dfrac{\alpha}{r} \right] \cdot r}
+\qquad \Leftrightarrow \qquad
+\dfrac{1}{ \left( 1-\alpha\right) \cdot r + \alpha}
+$$
+
+As $r \rightarrow \infty$, the efficiency is bounded by $1/\infty = 0$, which makes it less attractive as analysis.
+
+<!-- 
+Although the bound is not very interesting the inverse efficiency is interesting to when $r$ is still moderate.
+The inverse efficiency is also obtained as
+$$
+r - \left(r-1 \right) \cdot \alpha
+$$ -->
+
+
+## Weak scaling
+
+Here we take the opposite approach as we aim to increase the computational resources proportionally to the size of the problem.
+
+Similar to the Amdahl's law, the first approach here is to measure the speedup:
+$$
+\dfrac{1}{ r \cdot \left[ \left( 1-\alpha\right) + \dfrac{\alpha}{r} \right]}
+$$
+where the $r$ comes from the increase in size of the problem. This expression is exactly the same as the strong efficiency. Therefore not much can be extracted form this approach.
+
+
+Another analysis is to decompose the computational time of the program into operations that scale with the size of the problem and in fixed cost operations (which depends on the number of involved ranks in the case of MPI).
+Now the speedup becomes
+$$
+\dfrac{\dfrac{\beta S_o + C_o}{N_o} }{ \dfrac{\beta S_o r + C}{N}}
+\qquad \Leftrightarrow \qquad
+\dfrac{\left(\beta S_o  + C_o\right) \cdot r}{\beta S_o r + C}
+$$
+
+The goal of the weak scalability is focused on the communication part of the program.
+As the communication size per rank stays constant, we are interested in the evolution of the latency in the communications.
+
+
+
+
 
 --------------------------------------------------------------------------------
 [home](../index.md)

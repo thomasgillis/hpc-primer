@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- from https://benlansdell.github.io/computing/mathjax/ -->
-{% if page.use_math %}
+      {% if page.use_math %}
       {% include mathjax_support.html %}
-{% endif %}
+      {% endif %}
 
 {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">

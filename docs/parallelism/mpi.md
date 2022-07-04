@@ -98,19 +98,17 @@ On top of this main directions, some specific implementations of each communicat
 ## Strong scaling - aka Amdahl's Law
 
 In this case we fix the global workload and increase the computational resources.
-
-### Speedup
-if $\alpha$ percent of the program can be done in parallel, then the speedup from one resources $N_o$ to another one $N$ is given by (where $r = N/N_o$)
+Considering the reference configuration as being $T_o = \left( 1-\alpha_p\right) + \alpha_p$ where $\alpha_p$ percent of the program can be done in parallel, then the speedup from one resources $N_o$ to another one $N$ is given by (where $r = N/N_o$)
 
 $$
-\dfrac{1}{ \left( 1-\alpha\right) + \dfrac{\alpha}{r}}
+S = \dfrac{T_o}{T} = \dfrac{1}{ \left( 1-\alpha_p\right) + \dfrac{\alpha_p}{r}}
 $$
 
-As N increases, $r \rightarrow \infty$ and the speedup is bounded by $1/\left(1-\alpha\right)$.
+As N increases, $r \rightarrow \infty$ and the speedup is bounded by $1/\left(1-\alpha_p\right)$.
 
-The speedup is then valuable to determine $\alpha$, the percentage of the program actually done in parallel.
+The speedup is then valuable to determine $\alpha_p$, the percentage of the program actually done in parallel. Also we see that with this analysis the speedup is bounded.
 
-### Efficiency
+<!-- ### Efficiency
 still considering the same definitions, the efficiency of the program is given by 
 
 $$
@@ -121,7 +119,7 @@ $$
 \dfrac{1}{ \left( 1-\alpha\right) \cdot r + \alpha}
 $$
 
-As $r \rightarrow \infty$, the efficiency is bounded by $1/\infty = 0$, which makes it less attractive as analysis.
+As $r \rightarrow \infty$, the efficiency is bounded by $1/\infty = 0$, which makes it less attractive as analysis. -->
 
 <!-- 
 Although the bound is not very interesting the inverse efficiency is interesting to when $r$ is still moderate.
@@ -131,14 +129,35 @@ r - \left(r-1 \right) \cdot \alpha
 $$ -->
 
 
-## Weak scaling
+## Weak scaling, aka Gustafson's law
 
-Here we take the opposite approach as we aim to increase the computational resources proportionally to the size of the problem.
+Here we take the opposite approach as we aim to increase the computational resources proportionally to the size of the problem. This analysis is closer to the real-life applications
 
-Similar to the Amdahl's law, the first approach here is to measure the speedup:
+Considering the reference configuration as being $T_o = \left( 1-\alpha_p\right) + \alpha_p$, when multiplying the computational resources by $r$, the size of the problem is going to be multiplied by $r$ as well. As we scale the domain, the speedup does not make sense anymore and we will instead use and efficiency measure:
 $$
-\dfrac{1}{ r \cdot \left[ \left( 1-\alpha\right) + \dfrac{\alpha}{r} \right]}
+\eta = \dfrac{T_o}{T} = \dfrac{1}{ r \cdot \left[ \left( 1-\alpha_p\right) + \dfrac{\alpha_p}{r} \right]} = \dfrac{1}{r - (r-1) \alpha_p}
 $$
+
+By analogy some still like to define the speedup as being $s = \dfrac{1}{\eta}$, which gives now
+$$
+S = r - (r-1) \alpha_p
+$$
+
+Another approach is to define $\alpha_s = 1 - \alpha_p$ as the serial percentage of the program. The relations then become
+$$
+\eta =\dfrac{1}{1 + (r-1) \alpha_s} \quad \Leftrightarrow \quad S = 1 + (r-1) \alpha_s
+$$
+
+
+## Strong scaling and Gustafson's law
+
+It is also possible to apply the Gustafson logic to the strong scaling analysis, where one would define the efficiency as being
+
+$$
+\eta = \dfrac{T_o \cdot N_o}{T \cdot N} = \dfrac{1}{ r \cdot \left[  \left( 1-\alpha_p\right) + \dfrac{\alpha_p}{r}\right]} = \dfrac{1}{r - (r-1) \alpha_p}
+$$
+
+<!-- 
 where the $r$ comes from the increase in size of the problem. This expression is exactly the same as the strong efficiency. Therefore not much can be extracted form this approach.
 
 
@@ -148,10 +167,13 @@ $$
 \dfrac{\dfrac{\beta S_o + C_o}{N_o} }{ \dfrac{\beta S_o r + C}{N}}
 \qquad \Leftrightarrow \qquad
 \dfrac{\left(\beta S_o  + C_o\right) \cdot r}{\beta S_o r + C}
+\qquad \Leftrightarrow \qquad
+\dfrac{\beta S_o  + C_o}{\beta S_o + \dfrac{C}{r}}
 $$
 
-The goal of the weak scalability is focused on the communication part of the program.
-As the communication size per rank stays constant, we are interested in the evolution of the latency in the communications.
+The goal of the weak scalability is focused on the communication part of the program. If $\beta S_o \ll C_o $, the the observed efficiency is the ratio of the fixed costs. On the other side, if the fixed costs are negligibles then the ratio is $1$.
+
+Usually the fixed costs are evolving linearly with the size of the rank pool, which would also give a perfect  -->
 
 
 
